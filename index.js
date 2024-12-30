@@ -17,7 +17,7 @@ $(function () {
             photoWrapper.append(img);
         });
 
-        if (counter === savedOrder.length) {
+        if (counter === savedOrder.length && savedOrder.length > 0) {
             if (
                 globalMatrix.reduce((sum, value) => sum + (value ? 1 : 0), 0) === globalMatrix.length
             ) {
