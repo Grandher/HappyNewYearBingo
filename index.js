@@ -1,6 +1,6 @@
 $(function () {
     // При загрузке страницы восстанавливаем порядок картинок и цвет заголовка
-    const savedOrder = JSON.parse(localStorage.getItem("players"));
+    const savedOrder = JSON.parse(localStorage.getItem("players")) || [];
     const savedColor = localStorage.getItem("titleColor");
     const globalMatrix = JSON.parse(localStorage.getItem("globalMatrix")) || [];
 
@@ -16,18 +16,18 @@ $(function () {
             }
             photoWrapper.append(img);
         });
-    }
 
-    if (counter === savedOrder.length) {
-        if (
-            globalMatrix.reduce((sum, value) => sum + (value ? 1 : 0), 0) === globalMatrix.length
-        ) {
-            $("h1").text("Победа!!!");
-            $(".fireworks").show();
-        } else {
-            $("h1").text("Ну вы чо блин");
+        if (counter === savedOrder.length) {
+            if (
+                globalMatrix.reduce((sum, value) => sum + (value ? 1 : 0), 0) === globalMatrix.length
+            ) {
+                $("h1").text("Победа!!!");
+                $(".fireworks").show();
+            } else {
+                $("h1").text("Ну вы чо блин");
+            }
         }
-    }
+    }    
 
     if (savedColor) {
         $("h1").css("color", savedColor);
@@ -89,6 +89,6 @@ $(function () {
             return;
         }
         const playerId = $(this).attr("id");
-        window.location.href = `/game.html?player=${playerId}`;
+        window.location.href = `game.html?player=${playerId}`;
     });
 });

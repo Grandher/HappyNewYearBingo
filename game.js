@@ -99,7 +99,7 @@ $(function () {
                 currentPlayer.answers = currentPlayerQuestions.marked.reduce((sum, value) => sum + (value ? 1 : 0), 0);
                 localStorage.setItem("players", JSON.stringify(players));
 
-                window.location.href = "/index.html";
+                window.location.href = "index.html";
             });
         });
 
